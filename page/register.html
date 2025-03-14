@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/login.js" defer></script>
+</head>
+<body>
+    <section class="login" id="register">
+
+        <div class="container">
+            <img src="../img/bg-home.jpg" alt="" />
+            <form class="form" id="register-form" method="post">
+              <h2 class="header-text">Registrasi</h2>
+              <div class="input-group">
+                <input type="text" name="username" id="username" placeholder="Username" required autofocus />
+                <span id="username-error" class="error"></span>
+                <input type="password" name="password" id="password" placeholder="Password" required />
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="Konfirmasi Password" required />
+                <button type="submit" class="btn">Registrasi</button>
+              </div>
+              <p>Already have an account? <a href="login.html">Login here</a></p>
+            </form>
+          </div>
+
+    </section>
+</body>
+</html>

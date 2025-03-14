@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End Room</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- header section start -->
+     <header>
+
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="bars">≡</label>
+
+        <a href="#" class="logo">Study<span>Room.</span></a>
+        <nav class="navbar">
+            <a href="../index.html">Home</a>
+            <a href="courses.html">Course</a>
+            <a href="materi.htmlz">Material</a>
+        </nav>
+        
+        <div class="icons">
+            <a href="" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+        </div>
+
+     </header>
+    <!-- header section end -->
+
+    <!-- Home section start -->
+     <section class="home" id="home">
+
+        <div class="content">
+            <h3>Web Developer</h3>
+            <span>Learn From Beginner, intermediate, and advance</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti tenetur velit qui reiciendis ipsum cumque ipsa repudiandae numquam illum dicta, cupiditate quam quod repellat laborum ex architecto eaque dolores harum?</p>
+            <a href="#" class="btn">Show More</a>
+        </div>
+
+     </section>
+    <!-- Home section end -->
+
+    <!-- Material section start -->
+
+     <section class="material" id="material">
+
+        <h1 class="heading"> Course <span> Material </span> </h1>
+        
+            <div class="box-container">
+                <div class="box">
+                    <h2>Frameworks</h2>
+                    <p>Frameworks in web development are essential tools that streamline and standardize the process of building websites and web applications. They provide a structured approach to development by offering reusable code libraries, predefined architectures, and conventions that developers can follow. This systematic approach helps in accelerating development, improving code maintainability, and promoting best practices across projects.</p>
+                </div>
+
+                <div class="box">
+                    <h2>Front-End Frameworks</h2>
+                    <p>Front-End Frameworks: These frameworks focus on the user interface and client-side interactions.</p>
+                </div>
+
+                <div class="box">
+                    <h2>Back-End Frameworks</h2>
+                    <p>Back-End Frameworks: These frameworks handle server-side logic and database interactions.</p>
+                </div>
+
+                <div class="box">
+                    <h2>Full-Stack Frameworks</h2>
+                    <p>Full-Stack Frameworks: These frameworks provide tools for both front-end and back-end development, offering a cohesive solution for building entire applications.</p>
+                </div>
+            </div>
+
+     </section>
+
+    <!-- Material section end -->
+
+    <!-- Exercise section start -->
+     <section class="exercise" id="exercise">
+
+        <h1 class="heading"> Exercise <span> Material </span> </h1>
+        <div class="material-box">
+            <div class="box-container">
+                <form id="quizForm">
+                    <div class="question">
+                        <p>1. What is the purpose of using a front-end framework in web development?</p>
+                        <ul class="choices">
+                            <li><input type="radio" name="q1" value="A"> A. To create dynamic and interactive user interfaces</li>
+                            <li><input type="radio" name="q1" value="B"> B. To manage server-side logic</li>
+                            <li><input type="radio" name="q1" value="C"> C. To store and retrieve data from databases</li>
+                            <li><input type="radio" name="q1" value="D"> D. To secure website communications</li>
+                        </ul>
+                    </div>
+                    <div class="question">
+                        <p>2. Which of the following is NOT a front-end JavaScript framework</p>
+                        <ul class="choices">
+                            <li><input type="radio" name="q2" value="A"> A. Angular</li>
+                            <li><input type="radio" name="q2" value="B"> B. React</li>
+                            <li><input type="radio" name="q2" value="C"> C. Vue.js</li>
+                            <li><input type="radio" name="q2" value="D"> D. Django</li>
+                        </ul>
+                    </div>
+                    <div class="question">
+                        <p>3. Which front-end framework is developed and maintained by Facebook?</p>
+                        <ul class="choices">
+                            <li><input type="radio" name="q3" value="A"> A. Angular</li>
+                            <li><input type="radio" name="q3" value="B"> B. React</li>
+                            <li><input type="radio" name="q3" value="C"> C. Vue.js</li>
+                            <li><input type="radio" name="q3" value="D"> D. Django</li>
+                        </ul>
+                    </div>
+                    <div class="question">
+                        <p>4. Which framework is known for its component-based architecture and is widely used for building single-page applications?</p>
+                        <ul class="choices">
+                            <li><input type="radio" name="q4" value="A"> A. React</li>
+                            <li><input type="radio" name="q4" value="B"> B. Vue.js</li>
+                            <li><input type="radio" name="q4" value="C"> C. Django</li>
+                            <li><input type="radio" name="q4" value="D"> D. Angular</li>
+                        </ul>
+                    </div>
+                    <div class="question">
+                        <p>5. Which of the following is a popular CSS framework for building responsive and mobile-first websites?</p>
+                        <ul class="choices">
+                            <li><input type="radio" name="q5" value="A"> A. Ruby on Rails</li>
+                            <li><input type="radio" name="q5" value="B"> B. Flask</li>
+                            <li><input type="radio" name="q5" value="C"> C. Express.js </li>
+                            <li><input type="radio" name="q5" value="D"> D. Bootstrap </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="submit-button" onclick="checkAnswers()">Submit</button>
+                </form>
+                <div id="results"></div>
+            </div>
+        </div>
+
+     </section>
+    <!-- Exercise section start -->
+
+
+    <!-- Footer section start -->
+    <section class="footer" id="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>RoomStudy</h3>
+                <a href="">About</a>
+                <a href="">Career</a>
+                <a href="">Partnership</a>
+                <a href="">Blog</a>
+            </div>
+            <div class="box">
+                <h3>Location</h3>
+                <a href="">Indonesia</a>
+                <a href="">Singapore</a>
+                <a href="">Japan</a>
+                <a href="">China</a>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="">+62-111-1111-1111</a>
+                <a href="">abc@gmail.com</a>
+                <a href="">Jakarta, Indonesia - 453267</a>
+            </div>
+            <div class="box">
+                <h3>Product</h3>
+                <a href="">Front-end</a>
+                <a href="">frame-work</a>
+                <a href="">Back-end</a>
+            </div>
+
+        </div>
+
+        <div class="credit"> Created by <span> Grup 1 2SE5 </span> | on 2024 </div>
+
+    </section>
+    <!-- Footer section end -->
+
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
