@@ -22,7 +22,8 @@
         </nav>
         
         <div class="icons">
-            <a href="./page/login.html" class="icon-3"><img src="img/user-2.png" onmouseover="this.src='img/user-1.png'" onmouseout="this.src='img/user-2.png'" alt=""></a>
+            <span id="username-display" class="username-display"></span>
+            <a href="./page/login.html" id="login-link" class="icon-3"><img src="img/user-2.png" onmouseover="this.src='img/user-1.png'" onmouseout="this.src='img/user-2.png'" alt=""></a>
         </div>
 
      </header>
@@ -61,6 +62,110 @@
      </section>
     <!-- About section end -->
 
+    <!-- Review section start -->
+    
+    <section class="review" id="review">
+
+        <h1 class="heading"> Customer's <span> Review </span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="star">
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo voluptate iste molestias delectus sunt amet exercitationem quas, dicta dolores, vero officiis. Deleniti minima repudiandae dolore doloremque architecto provident, accusamus commodi?</p>
+                <div class="user">
+                    <img src="../img/customer-1.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Ayunda Mita</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="star">
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo voluptate iste molestias delectus sunt amet exercitationem quas, dicta dolores, vero officiis. Deleniti minima repudiandae dolore doloremque architecto provident, accusamus commodi?</p>
+                <div class="user">
+                    <img src="../img/customer-2.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Muhammad Hanif</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="star">
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo voluptate iste molestias delectus sunt amet exercitationem quas, dicta dolores, vero officiis. Deleniti minima repudiandae dolore doloremque architecto provident, accusamus commodi?</p>
+                <div class="user">
+                    <img src="../img/customer-3.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Senorita</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="star">
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo voluptate iste molestias delectus sunt amet exercitationem quas, dicta dolores, vero officiis. Deleniti minima repudiandae dolore doloremque architecto provident, accusamus commodi?</p>
+                <div class="user">
+                    <img src="../img/customer-4.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Rivaldo Agri</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="star">
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                    <i  class="icon-star">⭐</i>
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo voluptate iste molestias delectus sunt amet exercitationem quas, dicta dolores, vero officiis. Deleniti minima repudiandae dolore doloremque architecto provident, accusamus commodi?</p>
+                <div class="user">
+                    <img src="../img/customer-5.jpg" alt="">
+                    <div class="user-info">
+                        <h3>Antonius</h3>
+                        <span>Happy Customer</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Review section start -->
+
     <!-- Contact section start -->
     <section class="contact" id="contact">
 
@@ -80,6 +185,8 @@
 
     </section>
     <!-- Contact section end -->
+
+
 
     <!-- Footer section start -->
     <section class="footer" id="footer">
@@ -120,7 +227,33 @@
     </section>
     <!-- Footer section end -->
 
+    <!-- Chatbot section start -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <img src="./img/chatbot_1.png" alt="Chat" class="chat-icon">
+        </div>
+        <div class="chatbot-box" id="chatbot-box">
+            <div class="chatbot-header">
+                <h3>StudyRoom Assistant</h3>
+                <button class="close-btn" id="close-chat">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    Hi! I'm your StudyRoom assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-message">
+                    <img src="./img/send.png" alt="Send" class="send-icon">
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Chatbot section end -->
 
     <script src="./js/main.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/chatbot.js"></script>
 </body>
 </html>

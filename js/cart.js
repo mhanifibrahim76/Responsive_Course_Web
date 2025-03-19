@@ -1,51 +1,92 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function addToCart(item, img, link) {
-    cart.push({ item, img, link });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(item + ' books have been purchased.');
-
-    localStorage.setItem('buy' + item, 'true');
-    updateButtonToLink(item);
-}
-
-$(document).ready(function() {
-    if ($('#cartItems').length) {
-        updateCart();
-    } else;{
-        checkButtonStatus();
-    }
-});
-
-function updateCart() {
-    let cartItems = $('#cartItems');
-    let total = 0;
-
-    cartItems.html('');
-    cart.forEach(cartItem => {
-        let itemDiv = $('<div class="box"></div>');
-        let img = $('<img>').attr('src', cartItem.img).attr('alt', cartItem.item).addClass('cart-image');
-        itemDiv.append(img);
-        itemDiv.append(`<p>${cartItem.item}</p>`);
-        let link = $('<a></a>').attr('href', cartItem.link).text('Start Learn').addClass('btn');
-        itemDiv.append(link);
-        cartItems.append(itemDiv);
-        total += cartItem.price;
-    });
-
-    $('#totalPrice').text(total.toFixed(2));
-}
-
-function checkButtonStatus() {
-    cart.forEach(cartItem => {
-        if (localStorage.getItem('buy' + cartItem.item) === 'true') {
-            updateButtonToLink(cartItem.item);
+function addToCart(courseName, imageUrl, materiUrl) {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        if (confirm('You need to login first to purchase this course. Do you want to login now?')) {
+            window.location.href = '../page/login.html';
         }
+        return;
+    }
+
+    let purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || {};
+    if (!purchasedCourses[currentUser]) {
+        purchasedCourses[currentUser] = [];
+    }
+
+    // Check if user already purchased this course
+    if (purchasedCourses[currentUser].some(course => course.name === courseName)) {
+        alert('You have already purchased this course!');
+        return;
+    }
+
+    // Add course to purchased courses
+    purchasedCourses[currentUser].push({
+        name: courseName,
+        image: imageUrl,
+        materiUrl: materiUrl
     });
+    
+    localStorage.setItem('purchasedCourses', JSON.stringify(purchasedCourses));
+    alert('Course purchased successfully!');
+    updateButtonStates();
 }
 
-function updateButtonToLink(item) {
-    const button = $('#buy' + item + 'Btn');
-    const link = $('<a class="btn" ></a>').attr('href', cart.find(cartItem => cartItem.item === item).link).text('Start Learn').addClass('btn');
-    button.replaceWith(link);
+function updateButtonStates() {
+    const currentUser = localStorage.getItem('currentUser');
+    const courseButtons = {
+        'Front-End': document.getElementById('buyFront-EndBtn'),
+        'Frame-Work': document.getElementById('buyFrame-WorkBtn'),
+        'Back-End': document.getElementById('buyBack-EndBtn')
+    };
+
+    // Reset all buttons to Buy state
+    for (const [courseName, button] of Object.entries(courseButtons)) {
+        if (button) {
+            button.textContent = 'Buy';
+            button.disabled = false;
+            button.style.backgroundColor = '';
+            button.onclick = function() {
+                addToCart(courseName, 
+                    courseName === 'Front-End' ? '../img/front-end.jpg' : 
+                    courseName === 'Frame-Work' ? '../img/frame-work.jpg' : 
+                    '../img/back-end.jpg',
+                    courseName === 'Front-End' ? 'materi-front-end.html' : 
+                    courseName === 'Frame-Work' ? 'materi-frame-work.html' : 
+                    'materi-back-end.html'
+                );
+            };
+        }
+    }
+
+    // If user is logged in, update purchased courses
+    if (currentUser) {
+        const purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || {};
+        const userCourses = purchasedCourses[currentUser] || [];
+
+        for (const [courseName, button] of Object.entries(courseButtons)) {
+            if (button && userCourses.some(course => course.name === courseName)) {
+                button.textContent = 'Purchased';
+                button.disabled = true;
+                button.style.backgroundColor = '#999';
+            }
+        }
+
+        // Update purchased materials in materi page
+        const cartItemsContainer = document.getElementById('cartItems');
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+            userCourses.forEach(course => {
+                cartItemsContainer.innerHTML += `
+                    <div class="box">
+                        <img src="${course.image}" alt="${course.name}">
+                        <h2>${course.name}</h2>
+                        <a href="${course.materiUrl}" class="btn">View Material</a>
+                    </div>
+                `;
+            });
+        }
+    }
 }
+
+// Call updateButtonStates when page loads
+document.addEventListener('DOMContentLoaded', updateButtonStates);

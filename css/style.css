@@ -28,7 +28,7 @@ section{
     font-size: 4rem;
     color: #393E46;
     padding: 1rem;
-    margin: 2rem o;
+    margin: 2rem 0;
     background: #9EC8B9;
 }
 
@@ -631,7 +631,184 @@ header .bars{
     color: red;
 }
   
-/* Login & Register section : css start */
+/* Login & Register section : css end */
+
+
+/* Chatbot CSS start */
+.username-display {
+    color: #333;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    background-color: #1B4242;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+.chat-icon {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+}
+
+.chatbot-box {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-box.active {
+    display: flex;
+}
+
+.chatbot-header {
+    background-color: #1B4242;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #9EC8B9;
+    color: #1B4242;
+    margin-right: auto;
+}
+
+.user-message {
+    background-color: #1B4242;
+    color: #fff;
+    margin-left: auto;
+}
+
+.chatbot-input {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.chatbot-input button {
+    width: 40px;
+    height: 40px;
+    background-color: #1B4242;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-input button:hover {
+    background-color: #9EC8B9;
+}
+
+.send-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+/* Custom scrollbar for chat messages */
+.chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background: #9EC8B9;
+    border-radius: 3px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: #1B4242;
+}
+
+/* Add to Chatbot CSS section */
+.typing {
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.chatbot-input input:disabled,
+.chatbot-input button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+/* Chatbot CSS end */
 
 
 /* media queries */
@@ -653,7 +830,7 @@ header .bars{
     }
 }
 
-@media (max-width:768px) {
+@media (max-width:568px) {
     header .bars{
         display: block;
     }
@@ -688,6 +865,7 @@ header .bars{
 
     .heading{
         font-size: 3rem;
+        margin: 2rem 0;
     }
 
     .contact .image{
@@ -713,5 +891,11 @@ header .bars{
       .login .container form {
         padding: 5rem;
       }
+
+      .chatbot-box {
+        width: 275px;
+        height:550px;
+      }
     
 }
+

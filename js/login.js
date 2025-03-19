@@ -22,8 +22,6 @@ $(document).ready(function() {
             usernameError.text("");
         }
 
-   
-
         const users = JSON.parse(localStorage.getItem("users")) || [];
         if (users.some((user) => user.username === username)) {
             alert(`Username ${username} sudah terdaftar!`);
@@ -44,26 +42,27 @@ $(document).ready(function() {
     }
 });
 
-
-      $(document).ready(function() {
-        $('#loginForm').on('submit', function(event) {
-            event.preventDefault();
-            login();
-        });
-    
-        function login() {
-            const username = $('#username').val();
-            const password = $('#password').val();
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(user => user.username === username && user.password === password);
-            
-            if (!user) {
-                alert('Username atau password salah!');
-                return false;
-            }
-            
-            alert('Login berhasil!');
-            window.location.href = '../index.html';
-        }
+$(document).ready(function() {
+    $('#loginForm').on('submit', function(event) {
+        event.preventDefault();
+        login();
     });
+
+    function login() {
+        const username = $('#username').val();
+        const password = $('#password').val();
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.username === username && user.password === password);
+        
+        if (!user) {
+            alert('Username atau password salah!');
+            return false;
+        }
+        
+        // Store the current user in localStorage
+        localStorage.setItem('currentUser', username);
+        alert('Login berhasil!');
+        window.location.href = '../index.html';
+    }
+});
     
