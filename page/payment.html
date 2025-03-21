@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <!-- Payment section start -->
+    <section class="payment" id="payment">
+        <h1 class="heading">Complete Your <span>Payment</span></h1>
+        <div class="payment-container">
+            <form id="payment-form">
+                <div class="payment-option">
+                    <label for="google-pay">
+                        <input type="radio" name="payment-method" id="google-pay" value="Google Pay">
+                        <img src="../img/google-pay.png" alt="Google Pay" width="50">
+                        Google Pay
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <label for="paypal">
+                        <input type="radio" name="payment-method" id="paypal" value="PayPal">
+                        <img src="../img/paypal.png" alt="PayPal" width="50">
+                        PayPal
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <label for="visa">
+                        <input type="radio" name="payment-method" id="visa" value="Visa">
+                        <img src="../img/visa.png" alt="Visa" width="50">
+                        Visa
+                    </label>
+                </div>
+                <button type="submit" class="btn pay-btn">Pay Now</button>
+            </form>
+        </div>
+    </section>
+    <!-- Payment section end -->
