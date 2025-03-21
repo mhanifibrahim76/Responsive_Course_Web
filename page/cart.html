@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- header section start -->
+    <header>
+
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="bars">≡</label>
+
+        <a href="#" class="logo">Study<span>Room.</span></a>
+        <nav class="navbar">
+            <a href="../index.html">Home</a>
+            <a href="#">Course</a>
+            <a href="materi.html">Material</a>
+        </nav>
+
+        <div class="icons">
+            <span id="cart-display" class="cart-display"></span>
+            <a href="cart.html" id="cart-link" class="icon-login"><img src="../img/cart-1.png"
+                    onmouseover="this.src='../img/cart.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+        </div>
+
+        <div class="icons">
+            <span id="username-display" class="username-display"></span>
+            <a href="login.html" id="login-link" class="icon-3"><img src="../img/user-2.png"
+                    onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+        </div>
+
+    </header>
+    <!-- header section end -->
+
+    <!-- Cart section start-->
+
+
+
+<section class="cart" id="cart">
+        <h1 class="heading">Your <span>Cart</span></h1>
+        <div class="cart-container">
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <h3>Total: $<span id="total-price">0.00</span></h3>
+                <button class="btn checkout-btn" a href="payment.html" id="payment-id" class="icon-payment"></a>Checkout</button>
+                <button class="btn clear-btn">Clear Cart</button>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

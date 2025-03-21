@@ -24,7 +24,7 @@ $(document).ready(function() {
 
         const users = JSON.parse(localStorage.getItem("users")) || [];
         if (users.some((user) => user.username === username)) {
-            alert(`Username ${username} sudah terdaftar!`);
+            alert(`Username ${username} already registered!`);
             return;
         }
         if(String(password).length < 8){
@@ -32,12 +32,12 @@ $(document).ready(function() {
             return;
         }
         if (password !== confirmPassword) {
-            alert("Password tidak sama!");
+            alert("Password doesn't match!");
             return;
         }
         users.push({ username, password });
         localStorage.setItem("users", JSON.stringify(users));
-        alert("Registrasi berhasil!");
+        alert("Registration Success!");
         window.location.href = "login.html";
     }
 });
@@ -55,13 +55,13 @@ $(document).ready(function() {
         const user = users.find(user => user.username === username && user.password === password);
         
         if (!user) {
-            alert('Username atau password salah!');
+            alert('Username or Password is incorrect!');
             return false;
         }
         
         // Store the current user in localStorage
         localStorage.setItem('currentUser', username);
-        alert('Login berhasil!');
+        alert('Login Success!');
         window.location.href = '../index.html';
     }
 });
