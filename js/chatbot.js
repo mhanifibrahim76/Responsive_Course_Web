@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get response from Gemini API
     async function getGeminiResponse(message) {
-        const API_KEY = 'AIzaSyAgAzA-QdulrwoKwDaH51TneCefkLUiioQ';
+        const API_KEY = 'My_api';
         const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
         const requestBody = {
