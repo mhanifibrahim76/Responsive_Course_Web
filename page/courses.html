@@ -9,30 +9,31 @@
 </head>
 <body>
     <!-- header section start -->
-     <header>
+   <header>
 
-        <input type="checkbox" name="" id="toggler">
-        <label for="toggler" class="bars">≡</label>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="bars">≡</label>
 
-        <a href="#" class="logo">Study<span>Room.</span></a>
-        <nav class="navbar">
-            <a href="../index.html">Home</a>
-            <a href="#">Course</a>
-            <a href="materi.html">Material</a>
-        </nav>
+    <a href="#" class="logo">Study<span>Room.</span></a>
+    <nav class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="#">Course</a>
+        <a href="/page/materi.html">Material</a>
+        <a href="/page/cart.html" class="icons"><img src="../img/cart-1.png" onmouseover="this.src='../img/cart-2.png'" onmouseout="this.src='../img/cart-1.png'" alt=""></a>
+    </nav>
+    
+    <div class="icons-container">
         
-        <div class="icons">
-            <span id="cart-display" class="cart-display"></span>
-            <a href="cart.html" id="cart-link" class="icon-3"><img src="../img/cart-1.png" onmouseover="this.src='../img/cart.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
-        </div>
 
         <div class="icons">
+            <a href="./page/login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
             <span id="username-display" class="username-display"></span>
-            <a href="login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
         </div>
+    </div>
+    
 
-     </header>
-    <!-- header section end -->
+ </header>
+<!-- header section end -->
 
   
     <!-- Product section start -->
@@ -46,7 +47,8 @@
                 <div class="image">
                     <img src="../img/front-end.jpg" alt="">
                     <div class="icon">
-                        <button id="buyFront-EndBtn" class="btn" onclick="addToCart('Front-End', '../img/front-end.jpg', 'materi-front-end.html')">Buy</button>
+                        <button class="btn" onclick="addToCart('Front-End', '../img/front-end.jpg', 'materi-front-end.html')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Front-End', '../img/front-end.jpg', 'materi-front-end.html')">Buy Now</button>
                     </div>
                 </div>
                 <div class="content">
@@ -60,7 +62,8 @@
                 <div class="image">
                     <img src="../img/frame-work.jpg" alt="">
                     <div class="icon">
-                        <button id="buyFrame-WorkBtn" class="btn" onclick="addToCart('Frame-Work', '../img/frame-work.jpg', 'materi-frame-work.html')">Buy</button>
+                        <button class="btn" onclick="addToCart('Frame-Work', '../img/frame-work.jpg', 'materi-frame-work.html')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Frame-Work', '../img/frame-work.jpg', 'materi-frame-work.html')">Buy Now</button>
                     </div>
                 </div>
                 <div class="content">
@@ -74,7 +77,8 @@
                 <div class="image">
                     <img src="../img/back-end.jpg" alt="">
                     <div class="icon">
-                        <button id="buyBack-EndBtn" class="btn" onclick="addToCart('Back-End', '../img/back-end.jpg','materi-back-end.html')">Buy</button>
+                        <button class="btn" onclick="addToCart('Back-End', '../img/back-end.jpg','materi-back-end.html')">Add to Cart</button>
+                        <button class="btn" onclick="buyNow('Back-End', '../img/back-end.jpg','materi-back-end.html')">Buy Now</button>
                     </div>
                 </div>
                 <div class="content">

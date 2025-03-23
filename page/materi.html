@@ -5,76 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Material</title>
     <link rel="stylesheet" href="../css/style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <!-- header section start -->
-     <header>
-
+    <body>
+        <!-- header section start -->
+       <header>
+    
         <input type="checkbox" name="" id="toggler">
         <label for="toggler" class="bars">≡</label>
-
+    
         <a href="#" class="logo">Study<span>Room.</span></a>
         <nav class="navbar">
             <a href="../index.html">Home</a>
-            <a href="courses.html">Course</a>
+            <a href="/page/courses.html">Course</a>
             <a href="#">Material</a>
+            <a href="/page/cart.html" class="icons"><img src="../img/cart-1.png" onmouseover="this.src='../img/cart-2.png'" onmouseout="this.src='../img/cart-1.png'" alt=""></a>
         </nav>
         
-        <div class="icons">
-            <span id="username-display" class="username-display"></span>
-            <a href="login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+        <div class="icons-container">
+            
+    
+            <div class="icons">
+                <a href="./page/login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+                <span id="username-display" class="username-display"></span>
+            </div>
         </div>
-
+        
+    
      </header>
     <!-- header section end -->
 
     <!-- Material section start -->
-
      <section class="material" id="material">
-
-        <h1 class="heading"> Purchased <span> Materials </span> </h1>
-        
-            <div class="box-container" id="cartItems">
-                
-
-            </div>
-
+        <h1 class="heading"> My <span>Courses</span> </h1>
+        <div class="box-container" id="cartItems">
+            <!-- Purchased courses will be displayed here -->
+        </div>
      </section>
-
     <!-- Material section end -->
 
-    <!-- Materi section start -->
-    <section class="material" id="material">
-
-        <h1 class="heading"> Course <span> Material </span> </h1>
-        
-            <div class="box-container">
-                <div class="box">
-                    <h2>Front-End</h2>
-                    <p>Frontend development involves creating the visual and interactive aspects of a website that users interact with directly. It focuses on the user experience (UX) and user interface (UI) design.</p>
-                </div>
-
-                <div class="box">
-                    <h2>Frame-Work</h2>
-                    <p>A framework is a pre-built software environment that provides a foundation for developing applications. It includes libraries, tools, and best practices to streamline and standardize the development process. Frameworks can be used in both frontend and backend development.</p>
-                </div>
-
-                <div class="box">
-                    <h2>Back-End</h2>
-                    <p>Backend development involves the server-side logic and database management that power the functionality of a website or web application. It ensures that the frontend can function correctly and securely.</p>
-                </div>
+    <!-- Course Overview section start -->
+    <section class="material" id="overview">
+        <h1 class="heading"> Course <span>Overview</span> </h1>
+        <div class="box-container">
+            <div class="box">
+                <h2>Front-End</h2>
+                <p>Frontend development involves creating the visual and interactive aspects of a website that users interact with directly. It focuses on the user experience (UX) and user interface (UI) design.</p>
             </div>
 
-     </section>
-    <!-- Materi section end -->
+            <div class="box">
+                <h2>Frame-Work</h2>
+                <p>A framework is a pre-built software environment that provides a foundation for developing applications. It includes libraries, tools, and best practices to streamline and standardize the development process. Frameworks can be used in both frontend and backend development.</p>
+            </div>
 
+            <div class="box">
+                <h2>Back-End</h2>
+                <p>Backend development involves the server-side logic and database management that power the functionality of a website or web application. It ensures that the frontend can function correctly and securely.</p>
+            </div>
+        </div>
+     </section>
+    <!-- Course Overview section end -->
 
     <!-- Footer section start -->
-    <section class="footer" id="footer">
-
+    <section class="footer">
         <div class="box-container">
-
             <div class="box">
                 <h3>RoomStudy</h3>
                 <a href="">About</a>
@@ -101,14 +96,11 @@
                 <a href="">frame-work</a>
                 <a href="">Back-end</a>
             </div>
-
         </div>
 
         <div class="credit"> Created by <span> Grup 9 4SE4 </span> | on 2025 </div>
-
     </section>
     <!-- Footer section end -->
-
 
     <script src="../js/cart.js"></script>
     <script src="../js/auth.js"></script>

@@ -8,34 +8,128 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+    <!-- header section start -->
+    <header>
+
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="bars">≡</label>
+
+        <a href="#" class="logo">Study<span>Room.</span></a>
+        <nav class="navbar">
+            <a href="../index.html">Home</a>
+            <a href="/page/courses.html">Course</a>
+            <a href="/page/materi.html">Material</a>
+            <a href="/page/cart.html" class="icons"><img src="../img/cart-1.png" onmouseover="this.src='../img/cart-2.png'" onmouseout="this.src='../img/cart-1.png'" alt=""></a>
+        </nav>
+        
+        <div class="icons-container">
+            
+
+            <div class="icons">
+                <a href="./page/login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+                <span id="username-display" class="username-display"></span>
+            </div>
+        </div>
+        
+
+    </header>
+    <!-- header section end -->
+
     <!-- Payment section start -->
     <section class="payment" id="payment">
-        <h1 class="heading">Complete Your <span>Payment</span></h1>
-        <div class="payment-container">
-            <form id="payment-form">
-                <div class="payment-option">
-                    <label for="google-pay">
-                        <input type="radio" name="payment-method" id="google-pay" value="Google Pay">
-                        <img src="../img/google-pay.png" alt="Google Pay" width="50">
-                        Google Pay
-                    </label>
+        <div class="payment-wrapper">
+            <h1 class="heading">Complete Your <span>Payment</span></h1>
+            
+            <div class="payment-container">
+                <div class="payment-info">
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+                        <div class="order-details" id="order-details">
+                            <!-- Order details will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <form id="payment-form" onsubmit="return processPayment(event)">
+                        <h2>Select Payment Method</h2>
+                        <div class="payment-options">
+                            <div class="payment-option">
+                                <label for="google-pay">
+                                    <input type="radio" name="payment-method" id="google-pay" value="Google Pay" required>
+                                    <div class="option-content">
+                                        <img src="../img/Google_Pay.png" alt="Google Pay">
+                                        <span>Google Pay</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <label for="paypal">
+                                    <input type="radio" name="payment-method" id="paypal" value="PayPal">
+                                    <div class="option-content">
+                                        <img src="../img/PayPal.png" alt="PayPal">
+                                        <span>PayPal</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="payment-option">
+                                <label for="visa">
+                                    <input type="radio" name="payment-method" id="visa" value="Visa">
+                                    <div class="option-content">
+                                        <img src="../img/Visa.png" alt="Visa">
+                                        <span>Visa</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn pay-btn">
+                            <span>Pay Now</span>
+                            <span class="amount" id="payment-amount">$0.00</span>
+                        </button>
+                    </form>
                 </div>
-                <div class="payment-option">
-                    <label for="paypal">
-                        <input type="radio" name="payment-method" id="paypal" value="PayPal">
-                        <img src="../img/paypal.png" alt="PayPal" width="50">
-                        PayPal
-                    </label>
-                </div>
-                <div class="payment-option">
-                    <label for="visa">
-                        <input type="radio" name="payment-method" id="visa" value="Visa">
-                        <img src="../img/visa.png" alt="Visa" width="50">
-                        Visa
-                    </label>
-                </div>
-                <button type="submit" class="btn pay-btn">Pay Now</button>
-            </form>
+            </div>
         </div>
     </section>
     <!-- Payment section end -->
+
+    <!-- Footer section start -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>RoomStudy</h3>
+                <a href="">About</a>
+                <a href="">Career</a>
+                <a href="">Partnership</a>
+                <a href="">Blog</a>
+            </div>
+            <div class="box">
+                <h3>Location</h3>
+                <a href="">Indonesia</a>
+                <a href="">Singapore</a>
+                <a href="">Japan</a>
+                <a href="">China</a>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="">+62-111-1111-1111</a>
+                <a href="">abc@gmail.com</a>
+                <a href="">Jakarta, Indonesia - 453267</a>
+            </div>
+            <div class="box">
+                <h3>Product</h3>
+                <a href="">Front-end</a>
+                <a href="">frame-work</a>
+                <a href="">Back-end</a>
+            </div>
+        </div>
+
+        <div class="credit"> Created by <span> Grup 9 4SE4 </span> | on 2025 </div>
+    </section>
+    <!-- Footer section end -->
+
+    <script src="../js/main.js"></script>
+    <script src="../js/payment.js"></script>
+</body>
+</html>

@@ -8,26 +8,32 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- header section start -->
-     <header>
+   <!-- header section start -->
+   <header>
 
-        <input type="checkbox" name="" id="toggler">
-        <label for="toggler" class="bars">≡</label>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="bars">≡</label>
 
-        <a href="#" class="logo">Study<span>Room.</span></a>
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="./page/courses.html">Course</a>
-            <a href="./page/materi.html">Material</a>
-        </nav>
+    <a href="#" class="logo">Study<span>Room.</span></a>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="./page/courses.html">Course</a>
+        <a href="./page/materi.html">Material</a>
+        <a href="./page/cart.html" class="icons"><img src="../img/cart-1.png" onmouseover="this.src='../img/cart-2.png'" onmouseout="this.src='../img/cart-1.png'" alt=""></a>
+    </nav>
+    
+    <div class="icons-container">
         
-        <div class="icons">
-            <span id="username-display" class="username-display"></span>
-            <a href="./page/login.html" id="login-link" class="icon-3"><img src="img/user-2.png" onmouseover="this.src='img/user-1.png'" onmouseout="this.src='img/user-2.png'" alt=""></a>
-        </div>
 
-     </header>
-    <!-- header section end -->
+        <div class="icons">
+            <a href="./page/login.html" id="login-link" class="icon-3"><img src="../img/user-2.png" onmouseover="this.src='../img/user-1.png'" onmouseout="this.src='../img/user-2.png'" alt=""></a>
+            <span id="username-display" class="username-display"></span>
+        </div>
+    </div>
+    
+
+ </header>
+<!-- header section end -->
 
     <!-- Home section start -->
      <section class="home" id="home">

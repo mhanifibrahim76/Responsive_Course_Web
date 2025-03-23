@@ -1,4 +1,75 @@
+// Cart functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Check if a course has been purchased
+function isCoursePurchased(courseName) {
+    const singlePurchase = JSON.parse(localStorage.getItem('purchasedCourse'));
+    const multiPurchase = JSON.parse(localStorage.getItem('purchasedCourses'));
+    
+    if (singlePurchase && singlePurchase.name === courseName) {
+        return true;
+    }
+    
+    if (multiPurchase && multiPurchase.some(course => course.name === courseName)) {
+        return true;
+    }
+    
+    return false;
+}
+
+// Update course buttons based on purchase status
+function updateCourseButtons() {
+    const courseBoxes = document.querySelectorAll('.product .box');
+    
+    courseBoxes.forEach(box => {
+        const courseName = box.querySelector('.content h3').textContent;
+        const buttonContainer = box.querySelector('.icon');
+        const materiUrl = buttonContainer.querySelector('.buy-btn')?.getAttribute('onclick')?.match(/'([^']+)'/g)[2]?.replace(/'/g, '');
+        
+        if (isCoursePurchased(courseName)) {
+            buttonContainer.innerHTML = `
+                <a href="${materiUrl}" class="btn">View Material</a>
+            `;
+        }
+    });
+}
+
 function addToCart(courseName, imageUrl, materiUrl) {
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (!currentUser) {
+        if (confirm('You need to login first to add this course to cart. Do you want to login now?')) {
+            window.location.href = '../page/login.html';
+        }
+        return;
+    }
+
+    // Check if course is already purchased
+    if (isCoursePurchased(courseName)) {
+        window.location.href = materiUrl;
+        return;
+    }
+
+    // Check if course is already in cart
+    if (cart.some(item => item.name === courseName)) {
+        alert('This course is already in your cart!');
+        return;
+    }
+
+    // Add course to cart
+    cart.push({
+        name: courseName,
+        image: imageUrl,
+        materiUrl: materiUrl,
+        price: 12.99 // Add price information
+    });
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Course added to cart successfully!');
+    updateCartDisplay();
+}
+
+function buyNow(courseName, imageUrl, materiUrl) {
     const currentUser = localStorage.getItem('currentUser');
     
     if (!currentUser) {
@@ -8,85 +79,137 @@ function addToCart(courseName, imageUrl, materiUrl) {
         return;
     }
 
-    let purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || {};
-    if (!purchasedCourses[currentUser]) {
-        purchasedCourses[currentUser] = [];
-    }
-
-    // Check if user already purchased this course
-    if (purchasedCourses[currentUser].some(course => course.name === courseName)) {
-        alert('You have already purchased this course!');
+    // Check if course is already purchased
+    if (isCoursePurchased(courseName)) {
+        window.location.href = materiUrl;
         return;
     }
 
-    // Add course to purchased courses
-    purchasedCourses[currentUser].push({
+    // Store single item for payment
+    const purchaseItem = {
         name: courseName,
         image: imageUrl,
-        materiUrl: materiUrl
-    });
-    
-    localStorage.setItem('purchasedCourses', JSON.stringify(purchasedCourses));
-    alert('Course purchased successfully!');
-    updateButtonStates();
-}
-
-function updateButtonStates() {
-    const currentUser = localStorage.getItem('currentUser');
-    const courseButtons = {
-        'Front-End': document.getElementById('buyFront-EndBtn'),
-        'Frame-Work': document.getElementById('buyFrame-WorkBtn'),
-        'Back-End': document.getElementById('buyBack-EndBtn')
+        materiUrl: materiUrl,
+        price: 12.99
     };
+    
+    localStorage.setItem('currentPurchase', JSON.stringify(purchaseItem));
+    window.location.href = 'payment.html';
+}
 
-    // Reset all buttons to Buy state
-    for (const [courseName, button] of Object.entries(courseButtons)) {
-        if (button) {
-            button.textContent = 'Buy';
-            button.disabled = false;
-            button.style.backgroundColor = '';
-            button.onclick = function() {
-                addToCart(courseName, 
-                    courseName === 'Front-End' ? '../img/front-end.jpg' : 
-                    courseName === 'Frame-Work' ? '../img/frame-work.jpg' : 
-                    '../img/back-end.jpg',
-                    courseName === 'Front-End' ? 'materi-front-end.html' : 
-                    courseName === 'Frame-Work' ? 'materi-frame-work.html' : 
-                    'materi-back-end.html'
-                );
-            };
-        }
-    }
-
-    // If user is logged in, update purchased courses
-    if (currentUser) {
-        const purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || {};
-        const userCourses = purchasedCourses[currentUser] || [];
-
-        for (const [courseName, button] of Object.entries(courseButtons)) {
-            if (button && userCourses.some(course => course.name === courseName)) {
-                button.textContent = 'Purchased';
-                button.disabled = true;
-                button.style.backgroundColor = '#999';
-            }
-        }
-
-        // Update purchased materials in materi page
-        const cartItemsContainer = document.getElementById('cartItems');
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
-            userCourses.forEach(course => {
-                cartItemsContainer.innerHTML += `
-                    <div class="box">
-                        <img src="${course.image}" alt="${course.name}">
-                        <h2>${course.name}</h2>
-                        <a href="${course.materiUrl}" class="btn">View Material</a>
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+    
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = '';
+        let totalPrice = 0;
+        
+        cart.forEach((item, index) => {
+            totalPrice += item.price;
+            cartItemsContainer.innerHTML += `
+                <div class="cart-item">
+                    <img src="../img/${item.name}.jpg" alt="${item.name}">
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p>$${item.price.toFixed(2)}</p>
                     </div>
-                `;
-            });
+                    <button onclick="removeFromCart(${index})" class="remove-btn">Remove</button>
+                </div>
+            `;
+        });
+
+        if (totalPriceElement) {
+            totalPriceElement.textContent = totalPrice.toFixed(2);
         }
     }
 }
 
-// Call updateButtonStates when page loads
-document.addEventListener('DOMContentLoaded', updateButtonStates);
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+}
+
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Store cart items for payment
+    localStorage.setItem('currentPurchase', JSON.stringify({
+        items: cart,
+        totalPrice: cart.reduce((total, item) => total + item.price, 0)
+    }));
+    
+    window.location.href = 'payment.html';
+}
+
+// Clear cart
+function clearCart() {
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+}
+
+// Display purchased courses in material page
+function displayPurchasedCourses() {
+    const purchasedItemsContainer = document.getElementById('cartItems');
+    if (!purchasedItemsContainer) return;
+
+    // Get purchased courses from localStorage
+    const singlePurchase = JSON.parse(localStorage.getItem('purchasedCourse'));
+    const multiPurchase = JSON.parse(localStorage.getItem('purchasedCourses'));
+    
+    let purchasedItems = [];
+    
+    // Combine single and multiple purchases
+    if (singlePurchase) {
+        purchasedItems.push(singlePurchase);
+    }
+    if (multiPurchase) {
+        purchasedItems = purchasedItems.concat(multiPurchase);
+    }
+
+    // Display message if no purchases
+    if (purchasedItems.length === 0) {
+        purchasedItemsContainer.innerHTML = `
+            <div class="empty-message">
+                <h3>No purchased courses yet</h3>
+                <p>Browse our courses and start learning today!</p>
+                <a href="courses.html" class="btn">View Courses</a>
+            </div>
+        `;
+        return;
+    }
+
+    // Display purchased courses
+    purchasedItemsContainer.innerHTML = purchasedItems.map(item => `
+        <div class="box">
+            <img src="../img/${item.name}.jpg" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>Purchase Date: ${new Date(item.purchaseDate).toLocaleDateString()}</p>
+            <a href="${item.materiUrl}" class="btn">View Material</a>
+        </div>
+    `).join('');
+}
+
+// Initialize displays when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartDisplay();
+    displayPurchasedCourses();
+    updateCourseButtons();
+    
+    // Add event listeners for checkout and clear cart buttons
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const clearBtn = document.querySelector('.clear-btn');
+    
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', proceedToCheckout);
+    }
+    
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearCart);
+    }
+});
